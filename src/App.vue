@@ -4,19 +4,27 @@
   import { ref, computed, watchEffect } from "vue";
   import Title from "./components/Title.vue"
   import Stats from "./components/Stats.vue"
+  import PokemonSearch from "./components/PokemonSearch.vue"
 
   const pokemon = ref({})
   const pokemonImg = ref("")
   const pokemonTypes = ref([])
   const pokemonStats = ref([])
   const page = ref(1)
+  const errorMsg = ref("")
 
   const fetchPokemon = async (page) => {
-    const req = await axios.get(`https://pokeapi.co/api/v2/pokemon/${page}/`)
-    pokemon.value = req.data
-    pokemonImg.value = req.data.sprites.other.dream_world.front_default
-    pokemonTypes.value = req.data.types
-    pokemonStats.value = req.data.stats
+    try {
+      const req = await axios.get(`https://pokeapi.co/api/v2/pokemon/${page}/`)
+      pokemon.value = req.data
+      pokemonImg.value = req.data.sprites.other.dream_world.front_default
+      pokemonTypes.value = req.data.types
+      pokemonStats.value = req.data.stats
+      errorMsg.value = ""
+    } catch (error) {
+      errorMsg.value = "Pokemon not found!"
+    }
+
   }
 
   watchEffect(() => {
@@ -42,12 +50,24 @@
       page.value --
     }
   }
+
+  const pokemonSearch = (value) => {
+    if(value.length > 0 ) {
+      fetchPokemon(value)
+    }
+  }
 </script>
 
 <template>
   <div class="bg-gray-300 w-screen h-screen">
     <div class="p-14">
-      <Title :name="pokemon.name" :num="pokemonNum" />
+      <div class="flex justify-between items-center">
+        <Title :name="pokemon.name" :num="pokemonNum" />
+        <div>
+          <PokemonSearch :pokemonSearch="pokemonSearch"/>
+          <p class="text-red-500">{{errorMsg}}</p>
+        </div>
+      </div>
       <div class="flex justify-around items-center h-96">
         <div class="w-36">
           <h3>Height: {{pokemon.height}}m</h3>
