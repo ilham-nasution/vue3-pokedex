@@ -36,6 +36,12 @@
   const goToPage = (event) => {
     fetchPokemon(event.target.innerText)
   }
+
+  const prevPage = () => {
+    if(page.value > 1) {
+      page.value --
+    }
+  }
 </script>
 
 <template>
@@ -50,7 +56,7 @@
         <img :src="pokemonImg" :alt="pokemon.name"  class="w-72"/>
         <Stats :pokemonTypes="pokemonTypes" :pokemonStats="pokemonStats" />
         <div class="flex flex-col items-center text-lg w-5">
-          <ChevronUpIcon @click="page--" class="h-7 hover:h-8 cursor-pointer" />
+          <ChevronUpIcon @click="prevPage" class="h-7 hover:h-8 cursor-pointer" />
           <div @click="goToPage" class="hover:text-xl cursor-pointer" v-for="num in [...Array(10).keys()]" :key="num">
             {{num + page}}
           </div>
