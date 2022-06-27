@@ -28,10 +28,10 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.16.10.tgz#aba1b1cb9696a24a19f59c41af9cf17d1c716a88"
   integrity sha512-Sm/S9Or6nN8uiFsQU1yodyDW3MWXQhFeqzMPM+t8MJjM+pLsnFVxFZzkpXKvUXh+Gz9cbMoYYs484+Jw/NTEFQ==
 
-"@headlessui/vue@^1.4.3":
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.4.3.tgz#685898891cde4d8a38a01945d4d84855d5fe7224"
-  integrity sha512-cDAd3aP7jH5bO2WO4eSkyQQg0k6Zw8gobl+zL8LGApqix28EtlxultyKH/mVKnbo8Kiq6IDRzwP1HfKOf1QZbQ==
+"@headlessui/vue@^1.6.5":
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.6.5.tgz#d34005e7a19cac5cc95df82420a20bee529b65a1"
+  integrity sha512-C/BeTVuowTDLkGgUd6UfiPZVDLdR7OTnd8o4wF37Ub9Js1uhQ3XSTfitdZvlJALUqeQ30j+5Hk3KyjVDLQ3GYQ==
 
 "@heroicons/vue@^1.0.5":
   version "1.0.5"
